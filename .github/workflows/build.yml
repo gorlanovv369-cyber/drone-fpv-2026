@@ -59,10 +59,9 @@ jobs:
       - name: Build APK with Buildozer
         run: |
           export PYTHONHTTPSVERIFY=0
-          # Создаем директорию для автопринятия лицензий Android SDK
           mkdir -p ~/.android
           echo "### License accepted" > ~/.android/repositories.cfg
-          yes | buildozer -v android debug
+          buildozer -v android debug
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
