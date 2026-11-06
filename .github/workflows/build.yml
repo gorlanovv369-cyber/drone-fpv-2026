@@ -17,6 +17,12 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       - name: Install System Dependencies
         run: |
           sudo apt-get update
@@ -34,14 +40,7 @@ jobs:
             libavcodec-dev \
             zlib1g-dev \
             libffi-dev \
-            libssl-dev \
-            openjdk-17-jdk
-
-      - name: Install Android SDK & Build-Tools
-        uses: android-actions/setup-android@v3
-        with:
-          api-level: 33
-          build-tools-version: 33.0.2
+            libssl-dev
 
       - name: Install Buildozer and Cython
         run: |
@@ -50,6 +49,7 @@ jobs:
 
       - name: Build APK with Buildozer
         run: |
+          export JAVA_HOME=$JAVA_HOME
           buildozer android debug
 
       - name: Upload APK Artifact
