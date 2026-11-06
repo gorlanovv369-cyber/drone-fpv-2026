@@ -1,20 +1,19 @@
 [app]
-title = DroneApp
+title = Drone FPV Control
 package.name = droneapp
-package.domain = org.drone
-source.include_exts = py,png,jpg,kv,atlas
+package.domain = org.drone.fpv
 source.dir = .
+source.include_exts = py,png,jpg,kv,atlas
 version = 0.1
 requirements = python3,kivy,opencv,pyjnius
-orientation = portrait
-osx.python_version = 3
-osx.kivy_version = 1.9.1
-fullscreen = 0
+
+orientation = landscape
+fullscreen = 1
 android.permissions = INTERNET,CAMERA,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
+
 android.api = 33
-android.minapi = 24
+android.minapi = 26
 android.ndk = 25b
-android.archs = arm64-v8a
 
 [buildozer]
 log_level = 2
