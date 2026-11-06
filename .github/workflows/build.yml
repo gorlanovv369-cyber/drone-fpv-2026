@@ -34,7 +34,14 @@ jobs:
             libavcodec-dev \
             zlib1g-dev \
             libffi-dev \
-            libssl-dev
+            libssl-dev \
+            openjdk-17-jdk
+
+      - name: Install Android SDK & Build-Tools
+        uses: android-actions/setup-android@v3
+        with:
+          api-level: 33
+          build-tools-version: 33.0.2
 
       - name: Install Buildozer and Cython
         run: |
