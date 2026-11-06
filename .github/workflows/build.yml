@@ -24,7 +24,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Install System Dependencies for Android & Buildozer
+      - name: Install System Dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y \
@@ -56,14 +56,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install --upgrade cython==0.29.36 buildozer
 
-      - name: Build APK with Buildozer (Verbose)
+      - name: Build APK with Buildozer
         run: |
-          # Включаем отладку и разрешаем urllib работать без жестких сбоев SSL
           export PYTHONHTTPSVERIFY=0
+          # Увеличиваем таймауты и запускаем сборку с автопринятием лицензий
           buildozer -v android debug
-
-      - name: Upload APK Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: package
-          path: bin/*.apk
