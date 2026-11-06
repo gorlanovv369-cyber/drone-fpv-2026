@@ -14,6 +14,8 @@ android.permissions = INTERNET,CAMERA,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORA
 android.api = 33
 android.minapi = 26
 android.ndk = 25b
+# Явно фиксируем стабильную версию build-tools, чтобы избежать запроса лицензий на v37
+android.build_tools_version = 33.0.2
 
 [buildozer]
 log_level = 2
